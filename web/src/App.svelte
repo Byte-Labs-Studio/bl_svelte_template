@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { CONFIG } from './stores/stores';
-    import AlwaysListened from '@utils/listeners';
+    import AlwaysListened, { InitialiseListen } from '@utils/listeners';
     import Visibility from '@providers/Visibility.svelte';
     import Debug from '@providers/Debug.svelte';
     import ImageHolder from '@components/ImageHolder.svelte';
@@ -12,13 +12,7 @@
         allowEscapeKey: true,
     });
 
-    function init() {
-        for (const debug of AlwaysListened) {
-            ReceiveEvent(debug.action, debug.handler);
-        }
-    }
-
-    init();
+    InitialiseListen();
 </script>
 
 <Visibility>

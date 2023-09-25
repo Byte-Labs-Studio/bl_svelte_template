@@ -12,3 +12,11 @@ const AlwaysListened: DebugEventCallback[] = [
 ]
 
 export default AlwaysListened
+
+
+
+export function InitialiseListen() {
+    for (const debug of AlwaysListened) {
+        ReceiveEvent(debug.action, debug.handler);
+    }
+}
