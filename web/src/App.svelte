@@ -5,7 +5,6 @@
     import Visibility from '@providers/Visibility.svelte';
     import Debug from '@providers/Debug.svelte';
     import ImageHolder from '@components/ImageHolder.svelte';
-    import { ReceiveEvent } from '@utils/eventsHandlers';
 
     CONFIG.set({
         fallbackResourceName: 'debug',
