@@ -1,3 +1,4 @@
+import { IsEnvBrowser } from '@utils/eventsHandlers';
 import { get, writable } from 'svelte/store';
 
 
@@ -24,7 +25,7 @@ export const RESOURCE_NAME = writable<string>(
  * Whether the current environment is the browser or the client.
  * @type {Writable<boolean>}
  */
-export const IS_BROWSER = writable<boolean>(true);
+export const IS_BROWSER = writable<boolean>(IsEnvBrowser());
 
 /**
  * Whether the debug menu is visible or not.
