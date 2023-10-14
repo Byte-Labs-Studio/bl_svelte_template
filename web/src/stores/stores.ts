@@ -25,7 +25,7 @@ export const RESOURCE_NAME = writable<string>(
  * Whether the current environment is the browser or the client.
  * @type {Writable<boolean>}
  */
-export const IS_BROWSER = writable<boolean>(IsEnvBrowser());
+export const IS_BROWSER = writable<boolean>(!(window as any).invokeNative);
 
 /**
  * Whether the debug menu is visible or not.
