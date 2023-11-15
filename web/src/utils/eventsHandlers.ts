@@ -64,6 +64,34 @@ export function ReceiveEvent<T = unknown>(
 }
 
 /**
+ * Listen for an event from the Client
+ * YOU NEED TO BE SURE TO REMOVE THE LISTENER WHEN YOU'RE DONE WITH IT
+ * @param action The name of the event to listen for
+ * @param handler The callback to run when the event is received
+ * @returns {function}
+ **/
+export function TempReceiveEvent<T = unknown>(
+    action: string,
+    handler: (data: T) => void,
+): {removeListener: () => void} {
+    const eventListener = (event: MessageEvent<NuiMessage<T>>) => {
+        const { action: eventAction, data } = event.data;
+
+        eventAction === action && handler(data);
+    };
+
+    function removeListener() {
+        console.log('Removing event listener');
+        window.removeEventListener('message', eventListener);
+    }
+
+    // Add the event listener on mount and remove it on unmount
+    window.addEventListener('message', eventListener)
+    return {removeListener};
+}
+
+
+/**
  * Emulate an event sent from the Client
  * @param action The name of the event to send
  * @param data The data to send with the event
