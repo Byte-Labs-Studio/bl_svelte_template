@@ -1,8 +1,8 @@
 
-SEND = {
+Send = {
     visible = "resource:visible",
 }
 
-RECEIVE = {
+Receive = {
     close = "resource:close",
 }
