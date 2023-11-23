@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { CONFIG } from './stores/stores';
+    import { CONFIG, IS_BROWSER } from './stores/stores';
     import AlwaysListened, { InitialiseListen } from '@utils/listeners';
     import Visibility from '@providers/Visibility.svelte';
     import Debug from '@providers/Debug.svelte';
@@ -18,4 +18,6 @@
     <ImageHolder />
 </Visibility>
 
-<Debug />
+{#if $IS_BROWSER}
+    <Debug />
+{/if}
