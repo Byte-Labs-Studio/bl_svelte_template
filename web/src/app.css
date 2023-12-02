@@ -15,12 +15,12 @@
 :root {
     font-size: 62.5%;
 
-    --primary: #2c2c2c;
-    --secondary: #424050;
-    --accent: #8685ef;
+    --primary: theme('colors.primary');
+    --secondary: theme('colors.secondary');
+    --accent: theme('colors.accent');
 
-    --text-primary: #faf7ff;
-    --text-secondary: #2b2b2b;
+    --text-primary: theme('colors.txt-primary');
+    --text-secondary: theme('colors.txt-secondary');
 
     color: var(--text-primary);
 }
@@ -30,16 +30,4 @@ html, body {
     width: 100vw;
     font-size: 1.6rem;
     overflow: hidden;
-}
-
-.bg-primary {
-    background-color: var(--primary);
-}
-
-.bg-secondary {
-    background-color: var(--secondary);
-}
-
-.bg-accent {
-    background-color: var(--accent);
 }
