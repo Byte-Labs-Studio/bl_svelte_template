@@ -81,7 +81,6 @@ export function TempReceiveEvent<T = unknown>(
     };
 
     function removeListener() {
-        console.log('Removing event listener');
         window.removeEventListener('message', eventListener);
     }
 
