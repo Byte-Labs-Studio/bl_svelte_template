@@ -1,11 +1,7 @@
-local uiEvents = {}
-
-uiEvents.Send = {
+Send = {
     visible = "resource:visible",
 }
 
-uiEvents.Receive = {
+Receive = {
     close = "resource:close",
 }
-
-return uiEvents
