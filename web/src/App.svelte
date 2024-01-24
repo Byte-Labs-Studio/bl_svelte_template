@@ -1,9 +1,7 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import { CONFIG, IS_BROWSER } from './stores/stores';
-    import AlwaysListened, { InitialiseListen } from '@utils/listeners';
+    import { InitialiseListen } from '@utils/listeners';
     import Visibility from '@providers/Visibility.svelte';
-    import Debug from '@providers/Debug.svelte';
     import ImageHolder from '@components/ImageHolder.svelte';
 
     CONFIG.set({
@@ -19,5 +17,7 @@
 </Visibility>
 
 {#if $IS_BROWSER}
-    <Debug />
+    {#await import('./providers/Debug.svelte') then { default: Debug }}
+        <Debug />
+    {/await}
 {/if}
