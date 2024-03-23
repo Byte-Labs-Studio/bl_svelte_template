@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { InitialiseDebugSenders } from '@utils/debug/init';
+    import DebugImage from '@utils/debug/DebugImage.svelte';
+import { InitialiseDebugSenders } from '@utils/debug/init';
     import { InitialiseDebugReceivers } from '@utils/debug/receivers';
     import SendDebuggers from '@utils/debug/senders';
-    import debug_image from '@assets/debug_image.png';
     import { onMount } from 'svelte';
 
     onMount(() => {
@@ -108,7 +108,8 @@
     {/if}
 
     <div
-        style="background-image: url({debug_image});"
-        class="absolute w-screen bg-cover bg-no-repeat bg-center h-screen top-0 left-0 dev-image"
-    />
+        class="absolute w-screen bg-cover bg-no-repeat bg-center h-screen top-0 left-0 dev-image grid place-items-center"
+    >
+        <DebugImage />
+    </div>
 </div>

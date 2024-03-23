@@ -16,8 +16,10 @@
     <ImageHolder />
 </Visibility>
 
-{#if $IS_BROWSER}
-    {#await import('./providers/Debug.svelte') then { default: Debug }}
-        <Debug />
-    {/await}
+{#if import.meta.env.DEV}
+    {#if $IS_BROWSER}
+        {#await import('./providers/Debug.svelte') then { default: Debug }}
+            <Debug />
+        {/await}
+    {/if}
 {/if}
