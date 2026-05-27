@@ -10,7 +10,7 @@ export interface DebugEvent<T = any> {
 
 export interface DebugEventCallback<T = any> {
     action: string
-    handler?: (data: T) => unknown
+    handler: (data: T) => unknown
 }
 
 export interface CommonActionProperties {

@@ -2,9 +2,9 @@
     import { Receive } from '@enums/events';
     import { ReceiveEvent } from '@utils/eventsHandlers';
 
-    let size: number = 40;
-    let colInvert: boolean = true;
-    let text: string = 'Byte Labs';
+    let size = $state<number>(40);
+    let colInvert = $state<boolean>(true);
+    let text = $state<string>('Byte Labs');
 
     ReceiveEvent(Receive.imageResize, (value: number) => {
         size = value;

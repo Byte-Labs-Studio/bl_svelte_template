@@ -1,18 +1,21 @@
 <script lang="ts">
     import { Receive, Send } from '@enums/events';
-    import { VISIBLE, CONFIG } from '@stores/stores';
+    import { VISIBLE, CONFIG } from '@stores/stores.svelte';
     import { ReceiveEvent, SendEvent } from '@utils/eventsHandlers';
     import { onMount } from 'svelte';
+    import type { Snippet } from 'svelte';
+
+    let { children }: { children?: Snippet } = $props();
 
     ReceiveEvent(Receive.visible, (visible: boolean): void => {
-        $VISIBLE = visible;
+        VISIBLE.value = visible;
     });
 
     onMount(() => {
-        if (!$CONFIG.allowEscapeKey) return;
+        if (!CONFIG.allowEscapeKey) return;
 
         const keyHandler = (e: KeyboardEvent) => {
-            if ($VISIBLE && ['Escape'].includes(e.code)) {
+            if (VISIBLE.value && ['Escape'].includes(e.code)) {
                 SendEvent(Send.close);
             }
         };
@@ -21,9 +24,9 @@
     });
 </script>
 
-{#if $VISIBLE}
+{#if VISIBLE.value}
     <main>
-        <slot />
+        {@render children?.()}
     </main>
 {/if}
 

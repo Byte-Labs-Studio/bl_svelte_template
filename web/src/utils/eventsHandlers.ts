@@ -1,12 +1,11 @@
-import { get } from 'svelte/store';
-import { IS_BROWSER, RESOURCE_NAME } from '../stores/stores';
+import { IS_BROWSER, RESOURCE_NAME } from '../stores/stores.svelte';
 import type { DebugEvent, NuiMessage } from '../typings/events';
 import { onDestroy, onMount } from 'svelte';
 
-const isBrower = get(IS_BROWSER);
-const resourceName = get(RESOURCE_NAME);
+const isBrower = IS_BROWSER;
+const resourceName = RESOURCE_NAME;
 
-const debugEventListeners: DebugEvent[] = [];
+const debugEventListeners: Record<string, any> = {};
 
 /**
  * Get the current environment. Whether it's the browser or the client
